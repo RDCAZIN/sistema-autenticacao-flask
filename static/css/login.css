@@ -1,0 +1,172 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: linear-gradient(135deg, #141e30, #243b55);
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-size: 32px;
+}
+
+/* Container do login */
+.conteiner_login {
+    width: 380px;
+    padding: 35px;
+
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Formulário */
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Labels */
+.inputs label {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Campos de entrada */
+.inputs input[type="text"],
+.inputs input[type="password"],
+.inputs input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+
+    border: none;
+    border-radius: 8px;
+
+    outline: none;
+
+    font-size: 15px;
+    background: #ffffff;
+}
+
+/* Efeito ao clicar no campo */
+.inputs input:focus {
+    box-shadow: 0 0 0 3px rgba(0, 174, 255, 0.4);
+}
+
+/* Botão */
+.inputs input[type="submit"] {
+    margin-top: 20px;
+
+    padding: 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #00aaff;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+/* Hover do botão */
+.inputs input[type="submit"]:hover {
+    background: #0088cc;
+    transform: translateY(-2px);
+}
+
+/* Links */
+.conteiner_login a {
+    display: block;
+
+    margin-top: 15px;
+
+    text-align: center;
+
+    color: #ffffff;
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.conteiner_login a:hover {
+    color: #00aaff;
+}
+
+/* Container das mensagens */
+.flash-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    width: 300px;
+}
+
+/* Mensagem */
+.flash-message {
+    padding: 15px;
+    margin-bottom: 10px;
+
+    border-radius: 8px;
+
+    color: white;
+    font-weight: bold;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Mensagem de sucesso */
+.flash-success {
+    background-color: #28a745;
+}
+
+/* Mensagem de erro */
+.flash-danger,
+.flash-error {
+    background-color: #dc3545;
+}
+
+/* Responsividade para celular */
+@media (max-width: 500px) {
+    .conteiner_login {
+        width: 90%;
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .flash-container {
+        width: 90%;
+        right: 5%;
+    }
+}

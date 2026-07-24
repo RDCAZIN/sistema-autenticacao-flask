@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flash-container">
+      {% for category, message in messages %}
+        <div class="flash-message flash-{{ category }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+    <div class="conteiner_login">
+        <h1>Login</h1>
+        <form action="" method="post">
+            {{form.hidden_tag()}}
+            <div class="inputs">
+                {{form.identificador.label}}
+                {{form.identificador}}
+
+                {{form.senha.label}}
+                {{form.senha}}
+
+                {{form.submit()}}
+        </div>
+        </form>
+        <a href="{{url_for('auth.confirmar_email')}}">Esqueci a senha</a>
+        <a href="{{url_for('auth.cadastrar')}}">Criar conta</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+            {{ message }}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <h1>Cadastro de Usuario</h1>
+    <div class="conteiner_cadastro">
+        <form method="post">
+            {{form.hidden_tag()}}
+            <div class="inputs">
+                {{form.nome.label}}<br>
+                {{form.nome}}
+
+                {{form.email.label}}<br>
+                {{form.email}}
+
+                {{form.senha.label}}<br>
+                {{form.senha}}
+
+                {{form.confirma_senha.label}}<br>
+                {{form.confirma_senha}}
+
+                {{form.submit()}}
+            </div>
+            
+
+        </form>
+    </div>
+</body>
+</html>

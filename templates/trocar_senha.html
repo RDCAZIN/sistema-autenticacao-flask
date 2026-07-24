@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/troca.css') }}">
+    <title>Trocar senha</title>
+</head>
+<body>
+
+    {% for erro in form.confirma_senha.errors %}
+        <p>{{ erro }}</p>
+    {% endfor %}
+    <h1>Nova senha</h1>
+    <div class="conteiner_senha_nova">
+        <form action="{{url_for('auth.resetar_senha', token = token)}}" method="post">
+            {{form.hidden_tag()}}
+            <div class="inputs">
+                {{form.senha.label}}
+                {{form.senha}}
+
+                {{form.confirma_senha.label}}
+                {{form.confirma_senha}}
+
+                {{form.submit()}}
+            </div>
+        </form>
+
+    </div>
+    
+</body>
+</html>
