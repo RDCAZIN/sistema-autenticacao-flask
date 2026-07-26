@@ -3,10 +3,10 @@ from auth.forms import RegistroForm, LoginForm, EmailForm,  SenhaForm
 from models import Usuario
 from extensions import db,bcrypt,mail
 from sqlalchemy import or_
-from main.routes import home
 from config import Config
 from itsdangerous import URLSafeTimedSerializer
 from flask_mail import Message
+from flask_login import login_user,logout_user
 
 
 auth = Blueprint("auth", __name__)
@@ -20,6 +20,7 @@ def login():
     if form.validate_on_submit():
         usuario = Usuario.query.filter(or_(Usuario.usuario == form.identificador.data, Usuario.email == form.identificador.data)).first()
         if usuario and bcrypt.check_password_hash(usuario.senha, form.senha.data):
+            login_user(usuario)
             return redirect(url_for('main.home'))
         else:
             flash("Usuario ou Senha invalido", "erro")
@@ -80,7 +81,10 @@ def resetar_senha():
         print("ERRO:", e)
         flash("O seu Link expirou, solicite outro", "erro")
         return redirect(url_for('auth.confirmar_email'))
-
+@auth.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('auth.login'))
 
 
         
